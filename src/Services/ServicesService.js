@@ -5,4 +5,17 @@ function getServices() {
     return axios.get(API_URL + "services");
 }
 
-export default { getServices };
+function createService(service) {
+    return axios.post(API_URL + "services", service);
+}
+
+function updateService(service) {
+    return axios.patch(API_URL + "services/" + service.id_service, service);
+}
+
+function deleteService(id) {
+    return axios.delete(API_URL + "services/" + id);
+}
+
+
+export default { getServices, createService, updateService, deleteService };

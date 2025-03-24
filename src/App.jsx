@@ -13,7 +13,8 @@ import AdminClientsPage from './Pages/AdminClientsPage'
 import AdminReservationsPage from './Pages/AdminReservationsPage'
 import AdminServicesPage from './Pages/AdminServicesPage'
 import ServicesPage from './Pages/ServicesPage'
-
+import { ToastContainer } from 'react-toastify'
+import 'react-toastify/dist/ReactToastify.css'
 
 function App() {
   const [isConnected, setIsConnected] = useState(AuthService.isConnected());
@@ -21,7 +22,7 @@ function App() {
   const [user, setUser] = useState(AuthService.getUser());
 
   return <>
-    <AuthContext.Provider value={{isConnected, setIsConnected, role, setRole, user, setUser}}>
+    <AuthContext.Provider value={{ isConnected, setIsConnected, role, setRole, user, setUser }}>
       <BrowserRouter>
         <NavBar />
         <Routes>
@@ -38,6 +39,18 @@ function App() {
             <Route path='*' element={<HomePage />} />
           </>}
         </Routes>
+        <ToastContainer
+          position="bottom-right"
+          autoClose={5000}
+          hideProgressBar={false}
+          newestOnTop={false}
+          closeOnClick={false}
+          rtl={false}
+          pauseOnFocusLoss
+          draggable
+          pauseOnHover
+          theme="colored"
+        />
       </BrowserRouter>
     </AuthContext.Provider>
   </>

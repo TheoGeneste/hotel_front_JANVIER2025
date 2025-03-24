@@ -7,6 +7,7 @@ import AuthContext from '../Contextes/AuthContext';
 import { useNavigate } from 'react-router-dom';
 import { jwtDecode } from 'jwt-decode';
 import axios from 'axios';
+import { toast } from 'react-toastify';
 
 const LoginPage = () => {
     const [currentUser, setCurrentUser] = useState({
@@ -35,9 +36,11 @@ const LoginPage = () => {
             })
             setIsConnected(true);
             window.localStorage.setItem('token', response.data.token);
+            toast.success('Bonjour ' + data.prenom + ' ' + data.nom);
             navigate('/');
         }catch(error){
             console.log(error);
+            toast.error('Erreur lors de la connexion, veuillez vérifier vos identifiants');
         }
     }
 
