@@ -1,0 +1,13 @@
+.homepage-background {
+    background-image: url('../assets/hotel.jpg'); /* Remplacez par le chemin de votre image */
+    background-size: cover;
+    background-position: center;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.text-white {
+    color: white !important;
+}
