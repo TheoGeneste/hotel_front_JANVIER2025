@@ -29,6 +29,7 @@ const NavBar = () => {
                             <NavDropdown.Item onClick={() => { navigate("/admin/clients") }}>Clients</NavDropdown.Item>
                             <NavDropdown.Item onClick={() => { navigate("/admin/reservations") }}>Réservations</NavDropdown.Item>
                             <NavDropdown.Item onClick={() => { navigate("/admin/services") }}>Services</NavDropdown.Item>
+                            <NavDropdown.Item onClick={() => { navigate("/admin/payments") }}>Paiements</NavDropdown.Item>
                         </NavDropdown>
                     </>}
                     {isConnected == true ? <>

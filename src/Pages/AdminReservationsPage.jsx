@@ -12,6 +12,7 @@ import ReservationsService from "../Services/ReservationsService";
 import ModalCreateReservations from "../Components/ModalCreateReservations";
 import ModalUpdateReservations from "../Components/ModalUpdateReservations";
 import ModalDeleteReservations from "../Components/ModalDeleteReservations";
+import CheckCircleOutlineIcon from '@mui/icons-material/CheckCircleOutline';
 
 const AdminReservationsPage = () => {
     const [reservations, setReservations] = useState([]);
@@ -63,7 +64,7 @@ const AdminReservationsPage = () => {
         {
             name: 'Actions',
             cell: (row) => <div>
-                <Tooltip title="Modifier la chambre">
+                <Tooltip title="Modifier la réservation">
                     <IconButton onClick={() => {
                         setReservationSelected(row);
                         setModalUpdate(true);
@@ -71,12 +72,22 @@ const AdminReservationsPage = () => {
                         <EditIcon color="action" />
                     </IconButton>
                 </Tooltip>
-                <Tooltip title="Supprimer la chambre">
+                <Tooltip title="Supprimer la réservation">
                     <IconButton onClick={() => {
                         setReservationSelected(row);
                         setModalDelete(true);
                     }}>
                         <DeleteIcon color="error" />
+                    </IconButton>
+                </Tooltip>
+                <Tooltip title="Valider la réservation">
+                    <IconButton onClick={() => {
+                        let newReservation = row;
+                        newReservation.reservation_status = 'Valider';
+                        ReservationsService.updateReservation(newReservation);
+                        fetchReservations();
+                    }}>
+                        <CheckCircleOutlineIcon color="success" />
                     </IconButton>
                 </Tooltip>
             </div>

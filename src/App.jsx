@@ -15,6 +15,9 @@ import AdminServicesPage from './Pages/AdminServicesPage'
 import ServicesPage from './Pages/ServicesPage'
 import { ToastContainer } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css'
+import ReservationsPage from './Pages/ReservationsPage'
+import PaymentMethodPage from './Pages/PaymentMethodPage'
+import AdminPaymentsPage from './Pages/AdminPaymentsPage'
 
 function App() {
   const [isConnected, setIsConnected] = useState(AuthService.isConnected());
@@ -30,11 +33,14 @@ function App() {
           <Route path="/rooms" element={<RoomsPage />} />
           <Route path="/services" element={<ServicesPage />} />
           <Route path="/login" element={<LoginPage />} />
+          <Route path="/reservations/:id" element={<ReservationsPage />} />
+          <Route path="/payment/:id" element={<PaymentMethodPage />} />
           {role == 'ADMIN' ? <>
             <Route path="/admin/rooms" element={<AdminRoomsPage />} />
             <Route path="/admin/clients" element={<AdminClientsPage />} />
             <Route path="/admin/reservations" element={<AdminReservationsPage />} />
             <Route path="/admin/services" element={<AdminServicesPage />} />
+            <Route path="/admin/payments" element={<AdminPaymentsPage />} />
           </> : <>
             <Route path='*' element={<HomePage />} />
           </>}

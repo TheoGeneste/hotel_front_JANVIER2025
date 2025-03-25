@@ -5,6 +5,10 @@ function getReservations() {
   return axios.get(API_URL + "reservations");
 }
 
+function getReservationById(id) {
+  return axios.get(API_URL + "reservations/" + id);
+}
+
 function createReservation(reservation) {
   return axios.post(API_URL + "reservations", reservation);
 }
@@ -17,4 +21,4 @@ function deleteReservation(id) {
   return axios.delete(API_URL + "reservations/" + id);
 }
 
-export default { getReservations, createReservation, updateReservation, deleteReservation };
+export default { getReservationById,getReservations, createReservation, updateReservation, deleteReservation };

@@ -5,10 +5,12 @@ import double from '../assets/double.jpg';
 import suite from '../assets/suite.jpg';
 import { useContext } from 'react';
 import AuthContext from '../Contextes/AuthContext';
+import { useNavigate } from 'react-router-dom';
 
 
 const RoomCard = ({ room }) => {
     const {role} = useContext(AuthContext);
+    const navigate = useNavigate();
 
     return <>
         <Card style={{ width: '18rem' }}>
@@ -23,7 +25,7 @@ const RoomCard = ({ room }) => {
                     <li>Capacité : {room.capacity}</li>
                     {role == "admin" && <li>Disponible : {room.status}</li>}
                 </Card.Text>
-                <Button variant="primary">Réserver</Button>
+                <Button variant="primary" onClick={() => {navigate('/reservations/'+room.id_room)}}>Réserver</Button>
             </Card.Body>
         </Card>
     </>;
