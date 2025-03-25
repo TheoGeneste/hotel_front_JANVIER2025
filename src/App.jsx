@@ -18,6 +18,7 @@ import 'react-toastify/dist/ReactToastify.css'
 import ReservationsPage from './Pages/ReservationsPage'
 import PaymentMethodPage from './Pages/PaymentMethodPage'
 import AdminPaymentsPage from './Pages/AdminPaymentsPage'
+import ResetPasswordPage from './Pages/ResetPasswordPage'
 
 function App() {
   const [isConnected, setIsConnected] = useState(AuthService.isConnected());
@@ -35,6 +36,7 @@ function App() {
           <Route path="/login" element={<LoginPage />} />
           <Route path="/reservations/:id" element={<ReservationsPage />} />
           <Route path="/payment/:id" element={<PaymentMethodPage />} />
+          <Route path="/reset_password/:token" element={<ResetPasswordPage />} />
           {role == 'ADMIN' ? <>
             <Route path="/admin/rooms" element={<AdminRoomsPage />} />
             <Route path="/admin/clients" element={<AdminClientsPage />} />

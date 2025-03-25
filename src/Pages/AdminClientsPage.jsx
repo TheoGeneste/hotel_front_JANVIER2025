@@ -13,6 +13,8 @@ import moment from "moment";
 import ModalCreateClients from "../Components/ModalCreateClients";
 import ModalUpdateClients from "../Components/ModalUpdateClients";
 import ModalDeleteClients from "../Components/ModalDeleteClients";
+import PasswordIcon from '@mui/icons-material/Password';
+import { toast } from "react-toastify";
 
 const AdminClientsPage = () => {
     const [clients, setClients] = useState([]);
@@ -63,7 +65,7 @@ const AdminClientsPage = () => {
         {
             name: 'Actions',
             cell: (row) => <div>
-                <Tooltip title="Modifier la chambre">
+                <Tooltip title="Modifier le client">
                     <IconButton onClick={() => {
                         setClientSelected(row);
                         setModalUpdate(true);
@@ -71,12 +73,25 @@ const AdminClientsPage = () => {
                         <EditIcon color="action" />
                     </IconButton>
                 </Tooltip>
-                <Tooltip title="Supprimer la chambre">
+                <Tooltip title="Supprimer le client">
                     <IconButton onClick={() => {
                         setClientSelected(row);
                         setModalDelete(true);
                     }}>
                         <DeleteIcon color="error" />
+                    </IconButton>
+                </Tooltip>
+                <Tooltip title="Envoyé un email pour modifer le mot de passe">
+                    <IconButton onClick={async () => {
+                        try {
+                            await ClientsServices.sendEmailToChangePassword(row.email);
+                            toast.success('Email envoyé avec succès');
+                        } catch (error) {
+                            toast.error('Erreur lors de l\'envoie de l\'email');
+                            console.error(error);
+                        }
+                    }}>
+                        <PasswordIcon color="info" />
                     </IconButton>
                 </Tooltip>
             </div>
